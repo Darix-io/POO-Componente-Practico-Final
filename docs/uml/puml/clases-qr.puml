@@ -1,0 +1,29 @@
+@startuml
+class Usuario {
+  +id: int
+  +email: String
+  +estado: String
+}
+
+class QRCode {
+  +id: int
+  +codigo: String
+  +fecha_emision: DateTime
+  +fecha_expiracion: DateTime
+  +estado: String
+  +generar()
+  +renovar()
+  +validar()
+}
+
+class RegistroAcceso {
+  +id: int
+  +fecha_hora: DateTime
+  +tipo: String
+  +observacion: String
+}
+
+Usuario "1" -- "0..*" QRCode : posee
+Usuario "1" -- "0..*" RegistroAcceso : registra
+QRCode "1" -- "0..*" RegistroAcceso : valida
+@enduml

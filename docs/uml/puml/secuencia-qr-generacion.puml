@@ -1,0 +1,22 @@
+@startuml
+actor Admin as "Administrador"
+participant UI as "Interfaz"
+participant View as "Vista de QR"
+participant QR as "Módulo QR"
+participant DB as "Base de datos"
+
+Admin -> UI: Solicita generar QR
+UI -> View: POST generar QR
+View -> QR: generar()
+QR -> DB: Crear registro QR
+DB --> QR: Código generado
+QR --> View: QR creado
+View --> Admin: Muestra QR
+
+Admin -> UI: Solicita renovar QR
+UI -> View: POST renovar QR
+View -> QR: renovar()
+QR -> DB: Actualizar fecha de expiración
+DB --> QR: QR renovado
+QR --> View: Confirmación
+@enduml

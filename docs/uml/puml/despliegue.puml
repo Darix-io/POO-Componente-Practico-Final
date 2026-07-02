@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+actor Cliente
+actor Administrador
+rectangle "Navegador Web" as Browser
+rectangle "Frontend React/Vite" as Frontend
+rectangle "Backend Django" as Backend
+database "MySQL 8" as DB
+storage "Archivos estáticos/media" as Storage
+
+Cliente --> Browser
+Administrador --> Browser
+Browser --> Frontend
+Frontend --> Backend
+Backend --> DB
+Backend --> Storage
+@enduml

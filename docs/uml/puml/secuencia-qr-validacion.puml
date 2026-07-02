@@ -1,0 +1,15 @@
+@startuml
+actor Usuario
+participant App as "Aplicación / Scanner"
+participant View as "Vista de validación"
+participant QR as "Módulo QR"
+participant DB as "Base de datos"
+
+Usuario -> App: Escanea QR
+App -> View: Envía código QR
+View -> QR: validar(codigo)
+QR -> DB: Buscar QR activo
+DB --> QR: Registro encontrado
+QR --> View: QR válido o inválido
+View --> Usuario: Registra acceso o muestra error
+@enduml

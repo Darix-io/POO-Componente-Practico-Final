@@ -1,0 +1,16 @@
+@startuml
+actor Usuario
+participant UI as "Interfaz"
+participant View as "LoginPageView"
+participant Auth as "Django Auth"
+participant DB as "Base de datos"
+
+Usuario -> UI: Ingresa correo y contraseña
+UI -> View: POST /login
+View -> Auth: authenticate(email, password)
+Auth -> DB: Consulta usuario
+DB --> Auth: Usuario encontrado o no
+Auth --> View: Usuario autenticado o None
+View --> UI: Redirección al inicio o error
+UI --> Usuario: Muestra sesión iniciada o mensaje de error
+@enduml

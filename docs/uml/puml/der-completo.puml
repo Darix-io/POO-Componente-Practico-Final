@@ -1,0 +1,38 @@
+@startuml
+entity User {
+  *id : int <<PK>>
+  --
+  email : varchar <<UK>>
+  password : varchar
+  first_name : varchar
+  last_name : varchar
+  is_active : boolean
+  is_staff : boolean
+  is_superuser : boolean
+  date_joined : datetime
+}
+
+entity QRCode {
+  *id : int <<PK>>
+  --
+  user_id : int <<FK>>
+  code : varchar <<UK>>
+  created_at : datetime
+  expires_at : datetime
+  status : varchar
+}
+
+entity AccessLog {
+  *id : int <<PK>>
+  --
+  user_id : int <<FK>>
+  qr_id : int <<FK>>
+  access_time : datetime
+  action_type : varchar
+  observation : varchar
+}
+
+User ||--o{ QRCode : owns
+User ||--o{ AccessLog : registers
+QRCode ||--o{ AccessLog : validates
+@enduml

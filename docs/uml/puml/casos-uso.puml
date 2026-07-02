@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+actor Administrador
+actor Usuario
+rectangle "Sistema QR UNEMI" {
+  usecase "Iniciar sesión" as UC1
+  usecase "Gestionar usuarios" as UC2
+  usecase "Generar QR" as UC3
+  usecase "Renovar QR" as UC4
+  usecase "Consultar accesos" as UC5
+  usecase "Escanear QR" as UC6
+  usecase "Registrar entrada/salida" as UC7
+}
+
+Administrador --> UC1
+Administrador --> UC2
+Administrador --> UC3
+Administrador --> UC4
+Administrador --> UC5
+Usuario --> UC6
+Usuario --> UC7
+@enduml

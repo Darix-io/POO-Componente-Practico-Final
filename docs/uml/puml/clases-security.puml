@@ -1,0 +1,23 @@
+@startuml
+class User {
+  +id: int
+  +email: String
+  +password: String
+  +first_name: String
+  +last_name: String
+  +is_active: Boolean
+  +is_staff: Boolean
+  +is_superuser: Boolean
+  +date_joined: DateTime
+  +create_user()
+  +create_superuser()
+  +get_full_name()
+}
+
+class UserManager {
+  +create_user()
+  +create_superuser()
+}
+
+UserManager ..> User : administra
+@enduml
