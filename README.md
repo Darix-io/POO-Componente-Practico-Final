@@ -37,3 +37,4 @@ Sistema de control de acceso mediante códigos QR para la UNEMI.
 - Ver [BACKLOG.md](BACKLOG.md) para el Product Backlog con 7 historias de usuario, estimaciones y tablero sugerido.
 - Ver [docs/uml/README.md](docs/uml/README.md) para el modelado UML del Sprint 3.
 - Ver [docs/informe-sprint3.md](docs/informe-sprint3.md) para la sección del informe sobre modelado UML.
+- Ver [docs/informe-sprint4.md](docs/informe-sprint4.md) para el informe del Sprint 4 sobre frontend, accesibilidad y arquitectura de autenticación.

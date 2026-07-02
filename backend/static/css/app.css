@@ -1,0 +1,63 @@
+:root {
+  --unemi-blue: #0f4c81;
+  --unemi-accent: #f5a623;
+  --surface: #f8fafc;
+}
+
+body {
+  background: linear-gradient(135deg, #eef5fb 0%, #f8fafc 100%);
+  min-height: 100vh;
+}
+
+.auth-shell {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  min-height: 78vh;
+  align-items: center;
+}
+
+.auth-branding {
+  background: linear-gradient(135deg, var(--unemi-blue) 0%, #1a6db1 100%);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(15, 76, 129, 0.2);
+}
+
+.brand-card h1 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.brand-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.auth-card {
+  border-radius: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--unemi-blue);
+  border-color: var(--unemi-blue);
+}
+
+.btn-primary:hover {
+  background-color: #0c3b68;
+  border-color: #0c3b68;
+}
+
+@media (max-width: 767px) {
+  .auth-shell {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .auth-branding {
+    padding: 1.25rem;
+  }
+}

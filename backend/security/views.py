@@ -1,5 +1,8 @@
+import json
+
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
 
@@ -13,13 +16,26 @@ class LoginPageView(View):
         return render(request, self.template_name, {"title": "Iniciar sesión"})
 
     def post(self, request, *args, **kwargs):
-        email = request.POST.get("email", "").strip()
-        password = request.POST.get("password", "")
+        if request.content_type and "application/json" in request.content_type:
+            try:
+                payload = json.loads(request.body.decode("utf-8"))
+            except json.JSONDecodeError:
+                return JsonResponse({"success": False, "message": "Solicitud inválida"}, status=400)
+            email = (payload.get("email") or "").strip()
+            password = payload.get("password") or ""
+        else:
+            email = request.POST.get("email", "").strip()
+            password = request.POST.get("password", "")
 
         user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
+            if request.content_type and "application/json" in request.content_type:
+                return JsonResponse({"success": True, "message": "Inicio de sesión correcto", "redirect_url": "/"}, status=200)
             return redirect("home")
+
+        if request.content_type and "application/json" in request.content_type:
+            return JsonResponse({"success": False, "message": "Credenciales inválidas"}, status=401)
 
         return render(request, self.template_name, {"title": "Iniciar sesión", "error": "Credenciales inválidas"})
 
